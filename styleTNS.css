@@ -1,0 +1,387 @@
+ /* ============================================
+   FEARLESS GROWTH MASTERCLASS - THEME CSS
+   Inspired by the provided image design
+   ============================================ */
+
+/* ---------- RESET & BASE ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+    background-color: #f8f6f2;  /* soft off-white */
+    color: #1e1e2a;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+/* ---------- TYPOGRAPHY ---------- */
+h1, h2, h3, h4 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.section-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #b8a48c;
+    margin-bottom: 1.5rem;
+}
+
+.highlight {
+    color: #420507;  /* burgandy accent */
+}
+
+/* ---------- BUTTONS ---------- */
+.btn-primary {
+    display: inline-block;
+    background-color: #420507;
+    color: #f8f6f2;
+    padding: 0.9rem 2.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.btn-primary:hover {
+    background-color: #9e7273;
+    color: #1e1e2a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(201, 168, 124, 0.3);
+}
+
+.btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: #1e1e2a;
+    padding: 0.9rem 2.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    border: 2px solid #1e1e2a;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.btn-outline:hover {
+    background: #1e1e2a;
+    color: #f8f6f2;
+}
+
+/* ------- Navigation Bar -------- */
+
+.top-nav{
+    background-color: #420507;        /* dark base, matches the theme */
+    padding: 0 2rem;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid #c9a87c; /* gold accent line */
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.top-nav .brand {
+    color: #f8f6f2;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.top-nav .brand span {
+    color: #c9a87c;
+}
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;          /* spacing between links */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* ---------- HEADER / HERO ---------- */
+.hero {
+    text-align: center;
+    padding: 5rem 1rem 4rem;
+    background: linear-gradient(180deg, #f8f6f2 0%, #f0ebe3 100%);
+    border-bottom: 2px solid #e5ddd4;
+}
+
+.hero h1 {
+    font-size: 4.5rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: #0b0b0f;
+}
+
+.hero h1 span {
+    color: #1e1e2a;
+    display: block;
+    font-size: 3.2rem;
+    letter-spacing: 0.3em;
+}
+
+.hero .tagline {
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: #5a4f44;
+    margin: 1.5rem 0 2.5rem;
+}
+
+.hero .enter-room {
+    display: inline-block;
+    background: #420507;
+    color: #ffffff;
+    padding: 0.7rem 2.5rem;
+    border-radius: 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.9rem;
+    box-shadow: 0 8px 20px rgba(201, 168, 124, 0.3);
+    transition: all 0.3s ease;
+}
+
+.hero .enter-room:hover {
+    transform: scale(1.03);
+    background: #b8976a;
+}
+
+/* ---------- SECTION CARDS ---------- */
+.section-card {
+    background: #ffffff;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+    margin: 3rem 0;
+    border: 1px solid #f0ebe3;
+}
+
+.section-card.alt {
+    background: #fcfaf7;
+    border-color: #e8dfd6;
+}
+
+/* ---------- "LET ME GUESS" BLOCK ---------- */
+.perfect-block {
+    background: #f0ebe3;
+    padding: 2.5rem 2rem;
+    margin: 2.5rem 0;
+    border-left: 6px solid #c9a87c;
+}
+
+.perfect-block h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+}
+
+.perfect-block p {
+    font-size: 1.1rem;
+    color: #3a322a;
+    max-width: 700px;
+}
+.perfect-list{
+    list-style-type: none;
+    margin: .5 rem;
+    padding: 0;
+}
+
+/* ---------- STATS GRID ---------- */
+.ebox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    margin: 2.5rem 0;
+    text-align: center;
+}
+
+.ebox-item {
+    background: #f8f6f2;
+    padding: 1.8rem 1rem;
+    border-radius: 16px;
+    border: 1px solid #e5ddd4;
+}
+
+.ebox-number {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #1e1e2a;
+    line-height: 1;
+}
+
+.ebox-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #6b5f53;
+    margin-top: 0.3rem;
+}
+
+/* ---------- "THE CLOSING SECTION" ---------- */
+.closing-bluprint {
+    text-align: center;
+    padding: 3rem 1rem;
+    border-top: 2px solid #e5ddd4;
+    border-bottom: 2px solid #e5ddd4;
+    margin: 3rem 0;
+}
+
+.closing-bluprint h2 {
+    font-size: 3.2rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #1e1e2a;
+}
+
+.closing-bluprint h2 span {
+    color: #c9a87c;
+}
+
+.closing-bluprint .sub {
+    font-size: 1rem;
+    letter-spacing: 0.3em;
+    color: #8a7a68;
+    text-transform: uppercase;
+}
+
+/* ---------- COACH / CREATOR CARD ---------- */
+.ebox-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2.5rem;
+    background: #fcfaf7;
+    padding: 2.5rem;
+    border-radius: 24px;
+    border: 1px solid #e5ddd4;
+    margin: 2.5rem 0;
+}
+
+.ebox-card .text {
+    flex: 2;
+    min-width: 280px;
+}
+
+.ebox-card .text h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.ebox-card .text p {
+    font-size: 1.05rem;
+    color: #3a322a;
+    margin: 1rem 0 1.5rem;
+}
+
+.ebox-card .image-placeholder {
+    flex: 1;
+    min-width: 160px;
+    height: 180px;
+    background: #e5ddd4;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #6b5f53;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="%236b5f53" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px;
+}
+
+.ebox-hidden{
+    display: none;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+    .hero h1 span {
+        font-size: 2rem;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+    .ceo-bluprint h2 {
+        font-size: 2.2rem;
+    }
+    .ebox-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    .ebox-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .ebox-card .image-placeholder {
+        width: 140px;
+        height: 140px;
+        margin: 0 auto;
+    }
+    .perfect-block {
+        padding: 1.8rem 1.2rem;
+    }
+    .section-card {
+        padding: 2rem 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    .hero .tagline {
+        font-size: 1rem;
+    }
+    .ebox-number {
+        font-size: 2rem;
+    }
+    .btn-primary, .btn-outline {
+        padding: 0.7rem 1.8rem;
+        font-size: 0.75rem;
+    }
+}

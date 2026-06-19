@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Note Societys</title>
+    <!-- CSS Style -->
+     <link rel="stylesheet" href="styleTNS.css">
+    
+    <!-- Google Fonts (Montserrat) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+    
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+    <nav class="top-nav">
+        <!-- Logo -->
+        <a class="brand">TNS</a>
+
+        <div class="nav-links"> 
+            <a href="#">Home</a>
+            <a href="/Users/iphoneiphone/Documents/Workspace/TNS/experiencesTNS.html">Experiences</a>
+            <a href="">Gallery</a>
+            <a href="">Contact</a>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <header class="hero">
+        <div class="container">
+            <h3>The</h3>
+            <h1>
+                 NOTE <br /><span>SOCIETY</span>
+            </h1>
+            <p class="tagline">Luxury Mobile Fragrance Experiences <br> Creating unforgettable moments, one scent at a time.</p>
+            <button class="enter-room" id="enterRoomBtn">
+                <i class="fas fa-arrow-right" style="margin-right: 8px;"></i> BOOK YOUR EXPERIENCE
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- ========== ABOUT ========== -->
+        <section class="section-card">
+            <h2 class="section-title">About <span class="highlight">The Note Society</span></h2>
+            <h3>Where Every Scent Tells a Story</h3>
+            <p style="font-size: 1.3rem; font-weight: 600; letter-spacing: 0.02em;">
+                The Note Society transforms celebrations into unforgettable experiences through the art of fragrance.
+
+Our luxury mobile perfume bar invites guests to discover, blend, and personalize their own signature scent, creating a meaningful keepsake that captures the spirit of the occasion.
+
+Whether celebrating a wedding, hosting a corporate event, supporting a nonprofit gala, or gathering with loved ones, we bring elegance, creativity, and a touch of luxury to every experience.
+
+At The Note Society, we believe the best memories deserve a signature scent.
+            </p>
+        </section>
+
+        <!-- ========== Perfect For section ========== -->
+        <div class="perfect-block" id="perfectBlock">
+            <h3><i class="fas fa-lightbulb" style="color: #c9a87c; margin-right: 12px;"></i>Perfect For</h3>
+            <ul class="perfect-list">
+                <li>Display as icons or elegant cards.</li>
+                <li>Weddings</li>
+                <li>Corporate Events</li>
+                <li>Galas & Fundraisers</li>
+                <li>Bridal Showers</li>
+                <li>Baby Showers</li>
+                <li>Birthday Celebrations</li>
+                <li>Private Parties</li>
+                <li>Holiday Events</li>
+                <li>Brand Activations</li>
+            </ul>
+        </div>
+
+        <!-- ========== How It Works ========== -->
+        <div class="ebox-card">
+            <div class="text">
+                <h3>How It Works <br> <strong>Four Elegant Boxes</strong></h3>
+                <div class="ebox-grid">
+                    <!-- The Four Boxes-->
+                    <div class="ebox-item">
+                        <div class="ebox-number">1</div>
+                        <div class="ebox-label">DISCOVER</div>
+                        <div class="ebox-hidden">Explore our curated fragrance collection.</div>
+                    </div>
+                    <div class="ebox-item">
+                        <div class="ebox-number">2</div>
+                        <div class="ebox-label">CREATE</div>
+                        <div class="ebox-hidden">Blend beautiful scent notes to create a fragrance uniquely your own.</div>
+                    </div>
+                    <div class="ebox-item">
+                        <div class="ebox-number">3</div>
+                        <div class="ebox-label">PERSONALIZE</div>
+                        <div class="ebox-hidden">Select your bottle and customize your label.</div>
+                    </div>
+                    <div class="ebox-item">
+                        <div class="ebox-number">4</div>
+                        <div class="ebox-label">CELEBRATE</div>
+                        <div class="ebox-hidden">Take home a beautiful keepsake and lasting memory.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== THE closing BLUPRINT ========== -->
+        <div class="closing-bluprint">
+            <h2>Every Event <br> tells a <br> <span>story</span></h2>
+            <p class="sub">Let us help you create a fragrance your guests will never forget.</p>
+        </div>
+        <button class="btn-primary" id="quoteButton">
+                    <i class="fas fa-handshake" style="margin-right: 8px;"></i> REQUEST A QUOTE
+                </button>
+
+
+        
+
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer style="background: #1e1e2a; color: #b8a48c; text-align: center; padding: 2rem 1rem; border-top: 3px solid #c9a87c;">
+        <p style="font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;">
+            &copy; THE NOTE SOCIETY &bull; LUXURY MOBILE FRAGRANCE EXPERIENCES 
+        </p>
+        <p style="font-size: 0.7rem; margin-top: 0.3rem; opacity: 0.6;">
+            <i class="fas fa-heart" style="color: #c9a87c;"></i> 
+            Creating unforgettable moments, one scent at a time <br>
+            Available for travel <br>
+            Email: info@thenotesociety.com <br>
+
+        </p>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- JAVASCRIPT (interactivity)                                    -->
+    <!-- ============================================================ -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ----- helper: simple toast / alert replacement (console + friendly) -----
+            function showMessage(msg) {
+                // If you want a nice toast, you could implement one here.
+                // For now, we use a subtle console log + an alert (but we'll use a 
+                // more elegant console + a small DOM hint).
+                console.log('💡 ' + msg);
+                // Also show a gentle alert (but we'll make it less intrusive)
+                // We'll use a confirm-style but with a friendly message.
+                // For better UX, we'll create a small temporary message on screen.
+                const existing = document.querySelector('.js-temp-message');
+                if (existing) existing.remove();
+
+                const div = document.createElement('div');
+                div.className = 'js-temp-message';
+                div.style.cssText = `
+                    position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
+                    background: #1e1e2a; color: #f8f6f2; padding: 1rem 2rem;
+                    border-radius: 60px; font-weight: 600; letter-spacing: 0.04em;
+                    box-shadow: 0 8px 30px rgba(0,0,0,0.2); z-index: 999;
+                    border-left: 6px solid #c9a87c; max-width: 90%;
+                    text-align: center;
+                    animation: fadeSlideUp 0.3s ease;
+                `;
+                div.textContent = '✨ ' + msg;
+                document.body.appendChild(div);
+
+                // add a small keyframe if not exists
+                if (!document.getElementById('js-temp-keyframes')) {
+                    const style = document.createElement('style');
+                    style.id = 'js-temp-keyframes';
+                    style.textContent = `
+                        @keyframes fadeSlideUp {
+                            0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+                            100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+
+                setTimeout(() => {
+                    if (div.parentNode) {
+                        div.style.opacity = '0';
+                        div.style.transition = 'opacity 0.4s ease';
+                        setTimeout(() => { if (div.parentNode) div.remove(); }, 500);
+                    }
+                }, 2800);
+            }
+
+            // ----- grab all the buttons we want to wire up -----
+            const enterBtn = document.getElementById('enterRoomBtn');
+            const workBtns = [
+                document.getElementById('quoteButton')
+            ];
+            const finalCta = document.getElementById('finalCtaBtn');
+
+            // also the "ENTER THE ROOM" from hero
+            if (enterBtn) {
+                enterBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showMessage('🚪 You’ve entered the room. Let’s grow fearlessly.');
+                    // scroll a bit to the guess block
+                    const guess = document.getElementById('guessBlock');
+                    if (guess) {
+                        guess.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            }
+
+            // all "LET'S WORK TOGETHER" buttons
+            workBtns.forEach((btn, idx) => {
+                if (btn) {
+                    btn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        showMessage('REQUEST A QUOTE');
+                        // you could trigger a modal or contact form here
+                    });
+                }
+            });
+
+            // final CTA
+            if (finalCta) {
+                finalCta.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showMessage('🌟 Claim your clarity — your next level awaits.');
+                });
+            }
+
+            // ----- optional: add a hover effect to stats (already in CSS, but we add a little extra) -----
+            // also we can add a click to stats for fun
+            document.querySelectorAll('.stat-item').forEach((item) => {
+                item.addEventListener('click', function() {
+                    const label = this.querySelector('.stat-label')?.textContent || 'stat';
+                    const number = this.querySelector('.stat-number')?.textContent?.trim() || '';
+                    showMessage(`📊 ${number} ${label} — that’s the impact we create.`);
+                });
+            });
+
+            // ----- coach card image placeholder click (just for demo) -----
+            document.querySelectorAll('.image-placeholder').forEach((el) => {
+                el.addEventListener('click', function() {
+                    showMessage('👩‍🏫 Meet the coach behind the method.');
+                });
+            });
+
+            // ----- small extra: any "clarity-block" click -----
+            document.querySelectorAll('.clarity-block').forEach((block) => {
+                block.addEventListener('click', function() {
+                    showMessage('💎 Clarity changes everything. Start here.');
+                });
+            });
+
+            console.log('🔥 Fearless Growth Masterclass — interactive ready.');
+        })();
+    </script>
+
+</body>
+</html>
