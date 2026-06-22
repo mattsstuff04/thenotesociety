@@ -138,122 +138,225 @@ At The Note Society, we believe the best memories deserve a signature scent.
     <!-- JAVASCRIPT (interactivity)                                    -->
     <!-- ============================================================ -->
     <script>
-        (function() {
-            'use strict';
+         (function() {
+        'use strict';
 
-            // ----- helper: simple toast / alert replacement (console + friendly) -----
-            function showMessage(msg) {
-                // If you want a nice toast, you could implement one here.
-                // For now, we use a subtle console log + an alert (but we'll use a 
-                // more elegant console + a small DOM hint).
-                console.log('💡 ' + msg);
-                // Also show a gentle alert (but we'll make it less intrusive)
-                // We'll use a confirm-style but with a friendly message.
-                // For better UX, we'll create a small temporary message on screen.
-                const existing = document.querySelector('.js-temp-message');
-                if (existing) existing.remove();
+        // ----- helper: toast message (kept from original) -----
+        function showMessage(msg) {
+            const existing = document.querySelector('.js-temp-message');
+            if (existing) existing.remove();
 
-                const div = document.createElement('div');
-                div.className = 'js-temp-message';
-                div.style.cssText = `
-                    position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
-                    background: #1e1e2a; color: #f8f6f2; padding: 1rem 2rem;
-                    border-radius: 60px; font-weight: 600; letter-spacing: 0.04em;
-                    box-shadow: 0 8px 30px rgba(0,0,0,0.2); z-index: 999;
-                    border-left: 6px solid #c9a87c; max-width: 90%;
-                    text-align: center;
-                    animation: fadeSlideUp 0.3s ease;
+            const div = document.createElement('div');
+            div.className = 'js-temp-message';
+            div.style.cssText = `
+                position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
+                background: #1e1e2a; color: #f8f6f2; padding: 1rem 2rem;
+                border-radius: 60px; font-weight: 600; letter-spacing: 0.04em;
+                box-shadow: 0 8px 30px rgba(0,0,0,0.2); z-index: 999;
+                border-left: 6px solid #c9a87c; max-width: 90%;
+                text-align: center;
+                animation: fadeSlideUp 0.3s ease;
+            `;
+            div.textContent = '✨ ' + msg;
+            document.body.appendChild(div);
+
+            if (!document.getElementById('js-temp-keyframes')) {
+                const style = document.createElement('style');
+                style.id = 'js-temp-keyframes';
+                style.textContent = `
+                    @keyframes fadeSlideUp {
+                        0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+                        100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+                    }
                 `;
-                div.textContent = '✨ ' + msg;
-                document.body.appendChild(div);
+                document.head.appendChild(style);
+            }
 
-                // add a small keyframe if not exists
-                if (!document.getElementById('js-temp-keyframes')) {
-                    const style = document.createElement('style');
-                    style.id = 'js-temp-keyframes';
-                    style.textContent = `
-                        @keyframes fadeSlideUp {
-                            0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
-                            100% { opacity: 1; transform: translateX(-50%) translateY(0); }
-                        }
-                    `;
-                    document.head.appendChild(style);
+            setTimeout(() => {
+                if (div.parentNode) {
+                    div.style.opacity = '0';
+                    div.style.transition = 'opacity 0.4s ease';
+                    setTimeout(() => { if (div.parentNode) div.remove(); }, 500);
                 }
+            }, 2800);
+        }
 
-                setTimeout(() => {
-                    if (div.parentNode) {
-                        div.style.opacity = '0';
-                        div.style.transition = 'opacity 0.4s ease';
-                        setTimeout(() => { if (div.parentNode) div.remove(); }, 500);
-                    }
-                }, 2800);
-            }
+        // ============================================================
+        // FLIP CARD FUNCTIONALITY - preserves your existing HTML structure
+        // ============================================================
+        
+        // Step 1: Get all ebox-item elements
+        const eboxItems = document.querySelectorAll('.ebox-item');
+        
+        eboxItems.forEach((item, index) => {
+            // Make the card clickable
+            item.style.cursor = 'pointer';
+            
+            // Get the hidden content (the description)
+            const hiddenDiv = item.querySelector('.ebox-hidden');
+            const numberDiv = item.querySelector('.ebox-number');
+            const labelDiv = item.querySelector('.ebox-label');
+            
+            if (!hiddenDiv) return;
+            
+            // Store the original content and the hidden content
+            const originalContent = {
+                number: numberDiv ? numberDiv.textContent : '',
+                label: labelDiv ? labelDiv.textContent : ''
+            };
+            
+            const hiddenText = hiddenDiv.textContent;
+            
+            // Create a flip state variable
+            let isFlipped = false;
+            
+            // Create back side content (hidden message)
+            const backDiv = document.createElement('div');
+            backDiv.className = 'ebox-back';
+            backDiv.style.cssText = `
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 1rem;
+                background: #ffffff;
+                border-radius: 16px;
+                border: 1px solid #c9a87c;
+                transform: rotateY(180deg);
+                backface-visibility: hidden;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 0.85rem;
+                font-weight: 500;
+                color: #1e1e2a;
+                text-align: center;
+                line-height: 1.5;
+                box-shadow: 0 4px 14px rgba(201, 168, 124, 0.15);
+            `;
+            backDiv.textContent = hiddenText;
+            
+            // Wrap the item content in a 3D container
+            // First, save the current children
+            const children = Array.from(item.children);
+            
+            // Create the flip container
+            const flipContainer = document.createElement('div');
+            flipContainer.className = 'flip-inner';
+            flipContainer.style.cssText = `
+                position: relative;
+                width: 100%;
+                height: 100%;
+                transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+                transform-style: preserve-3d;
+                min-height: 120px;
+            `;
+            
+            // Create front side container
+            const frontDiv = document.createElement('div');
+            frontDiv.className = 'ebox-front';
+            frontDiv.style.cssText = `
+                position: relative;
+                width: 100%;
+                height: 100%;
+                backface-visibility: hidden;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 1.8rem 1rem;
+                background: #f8f6f2;
+                border-radius: 16px;
+                border: 1px solid #e5ddd4;
+                min-height: 120px;
+            `;
+            
+            // Move children to front div
+            children.forEach(child => {
+                frontDiv.appendChild(child);
+            });
+            
+            // Assemble the flip card
+            flipContainer.appendChild(frontDiv);
+            flipContainer.appendChild(backDiv);
+            
+            // Clear the item and add the flip container
+            item.innerHTML = '';
+            item.style.position = 'relative';
+            item.style.perspective = '1200px';
+            item.style.minHeight = '150px';
+            item.style.background = 'transparent';
+            item.style.border = 'none';
+            item.style.padding = '0';
+            item.appendChild(flipContainer);
+            
+            // Click handler to flip
+            item.addEventListener('click', function(e) {
+                e.stopPropagation();
+                isFlipped = !isFlipped;
+                flipContainer.style.transform = isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
+                
+            });
+        });
 
-            // ----- grab all the buttons we want to wire up -----
-            const enterBtn = document.getElementById('enterRoomBtn');
-            const workBtns = [
-                document.getElementById('quoteButton')
-            ];
-            const finalCta = document.getElementById('finalCtaBtn');
+        // ============================================================
+        // ORIGINAL BUTTON HANDLERS (kept mostly the same)
+        // ============================================================
+        
+        const enterBtn = document.getElementById('enterRoomBtn');
+        const quoteBtn = document.getElementById('quoteButton');
+        const finalCta = document.getElementById('finalCtaBtn');
 
-            // also the "ENTER THE ROOM" from hero
-            if (enterBtn) {
-                enterBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    showMessage('🚪 You’ve entered the room. Let’s grow fearlessly.');
-                    // scroll a bit to the guess block
-                    const guess = document.getElementById('guessBlock');
-                    if (guess) {
-                        guess.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            }
-
-            // all "LET'S WORK TOGETHER" buttons
-            workBtns.forEach((btn, idx) => {
-                if (btn) {
-                    btn.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        showMessage('REQUEST A QUOTE');
-                        // you could trigger a modal or contact form here
-                    });
+        if (enterBtn) {
+            enterBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                showMessage('🚪 You\'ve entered the room. Let\'s grow fearlessly.');
+                const guess = document.getElementById('guessBlock');
+                if (guess) {
+                    guess.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
+        }
 
-            // final CTA
-            if (finalCta) {
-                finalCta.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    showMessage('🌟 Claim your clarity — your next level awaits.');
-                });
-            }
-
-            // ----- optional: add a hover effect to stats (already in CSS, but we add a little extra) -----
-            // also we can add a click to stats for fun
-            document.querySelectorAll('.stat-item').forEach((item) => {
-                item.addEventListener('click', function() {
-                    const label = this.querySelector('.stat-label')?.textContent || 'stat';
-                    const number = this.querySelector('.stat-number')?.textContent?.trim() || '';
-                    showMessage(`📊 ${number} ${label} — that’s the impact we create.`);
-                });
+        if (quoteBtn) {
+            quoteBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                showMessage('📩 Request a quote — we\'ll be in touch shortly.');
             });
+        }
 
-            // ----- coach card image placeholder click (just for demo) -----
-            document.querySelectorAll('.image-placeholder').forEach((el) => {
-                el.addEventListener('click', function() {
-                    showMessage('👩‍🏫 Meet the coach behind the method.');
-                });
+        if (finalCta) {
+            finalCta.addEventListener('click', function(e) {
+                e.preventDefault();
+                showMessage('🌟 Claim your clarity — your next level awaits.');
             });
+        }
 
-            // ----- small extra: any "clarity-block" click -----
-            document.querySelectorAll('.clarity-block').forEach((block) => {
-                block.addEventListener('click', function() {
-                    showMessage('💎 Clarity changes everything. Start here.');
-                });
+        // Additional interactivity (kept from original)
+        document.querySelectorAll('.stat-item').forEach((item) => {
+            item.addEventListener('click', function() {
+                const label = this.querySelector('.stat-label')?.textContent || 'stat';
+                const number = this.querySelector('.stat-number')?.textContent?.trim() || '';
+                showMessage(`📊 ${number} ${label} — that\'s the impact we create.`);
             });
+        });
 
-            console.log('🔥 Fearless Growth Masterclass — interactive ready.');
-        })();
+        document.querySelectorAll('.image-placeholder').forEach((el) => {
+            el.addEventListener('click', function() {
+                showMessage('👩‍🏫 Meet the coach behind the method.');
+            });
+        });
+
+        document.querySelectorAll('.clarity-block').forEach((block) => {
+            block.addEventListener('click', function() {
+                showMessage('💎 Clarity changes everything. Start here.');
+            });
+        });
+
+        console.log('🔥 Flip cards ready — click any box to reveal the hidden message!');
+    })();
     </script>
 
 </body>
