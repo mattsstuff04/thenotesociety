@@ -11,7 +11,7 @@
 }
 
 body {
-    font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+    font-family: cursive;
     background-color: #f8f6f2;  /* soft off-white */
     color: #1e1e2a;
     line-height: 1.6;
@@ -27,6 +27,9 @@ body {
 h1, h2, h3, h4 {
     font-weight: 700;
     letter-spacing: -0.02em;
+}
+p{
+    font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
 }
 
 .section-title {
@@ -130,6 +133,7 @@ h1, h2, h3, h4 {
     list-style: none;
     margin: 0;
     padding: 0;
+    color:#c9a87c;
 }
 
 /* ---------- HEADER / HERO ---------- */
@@ -218,6 +222,7 @@ h1, h2, h3, h4 {
     max-width: 700px;
 }
 .perfect-list{
+    font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
     list-style-type: none;
     margin: .5 rem;
     padding: 0;
@@ -335,6 +340,23 @@ h1, h2, h3, h4 {
     display: none;
 }
 
+/* Experiences */
+.experience{
+    text-align: center;
+    padding: 5rem 1rem 4rem;
+    background: linear-gradient(180deg, #f8f6f2 0%, #f0ebe3 100%);
+    border-bottom: 2px solid #e5ddd4;
+}
+.experience-box{
+    background: #f0ebe3;
+    padding: 2.5rem 2rem;
+    margin: 2.5rem 0;
+    border-left: 6px solid #420507;
+}
+.experience-box h2{
+    font-family: cursive;
+    color: #420507;
+}
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 768px) {
     .hero h1 {
